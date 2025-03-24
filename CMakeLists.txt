@@ -20,22 +20,28 @@ endif()
 set(LIB_INSTALL_DIR lib CACHE STRING "Install location of libraries")
 set(BIN_INSTALL_DIR bin CACHE STRING "Install location of executables")
 
-# other options for the build, you can i.e. activate the shared library by passing
-#   -D BUILD_SHARED=ON
-# to cmake. Other options analog
-if(ANDROID)
-  option(BUILD_DEMOS "Build the demo applications" OFF)
-  option(INSTALL_DEMOS "Install the demo applications" OFF)
-  option(BUILD_SHARED "Build and install the shared library" ON)
-  option(BUILD_STATIC "Build as static library" ON)
-  option(INSTALL_STATIC "Install the static library" OFF)
-else()
-  option(BUILD_DEMOS "Build the demo applications" ON)
-  option(INSTALL_DEMOS "Install the demo applications" OFF)
-  option(BUILD_SHARED "Build and install the shared library" ON)
-  option(BUILD_STATIC "Build as static library" ON)
-  option(INSTALL_STATIC "Install the static library" ON)
-endif()
+option(BUILD_DEMOS "Build the demo applications" OFF)
+option(INSTALL_DEMOS "Install the demo applications" OFF)
+option(BUILD_SHARED "Build and install the shared library" OFF)
+option(BUILD_STATIC "Build as static library" ON)
+option(INSTALL_STATIC "Install the static library" OFF)
+
+# # other options for the build, you can i.e. activate the shared library by passing
+# #   -D BUILD_SHARED=ON
+# # to cmake. Other options analog
+# if(ANDROID)
+#   option(BUILD_DEMOS "Build the demo applications" OFF)
+#   option(INSTALL_DEMOS "Install the demo applications" OFF)
+#   option(BUILD_SHARED "Build and install the shared library" ON)
+#   option(BUILD_STATIC "Build as static library" ON)
+#   option(INSTALL_STATIC "Install the static library" OFF)
+# else()
+#   option(BUILD_DEMOS "Build the demo applications" ON)
+#   option(INSTALL_DEMOS "Install the demo applications" OFF)
+#   option(BUILD_SHARED "Build and install the shared library" ON)
+#   option(BUILD_STATIC "Build as static library" ON)
+#   option(INSTALL_STATIC "Install the static library" ON)
+# endif()
 
 if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
   option(FORCE_CLANG_BLOCKS "Force enable Clang blocks" YES)
@@ -62,6 +68,6 @@ endif()
 
 add_subdirectory(src)
 
-if(BUILD_DEMOS)
-  add_subdirectory(demo)
-endif()
+# if(BUILD_DEMOS)
+#   add_subdirectory(demo)
+# endif()
